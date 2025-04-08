@@ -15,7 +15,7 @@ All the scripts have a help sections, to use this
 
 Default inputs and ouputs are set (denoted by the square brackets [] in the instructions below) so the scripts work in conjunction with one another, these can be changed with the -i and -o option for the input file and output file names respectively. This would be as follows 
 
-	python [name of script].py -i 'input file name' -o 'output filename'
+	python [name of script].py -i [input file name] -o [output filename]
 
 1. Reading the optimised structure and creating the primitive cell [CONTCAR > POSCAR_prim]: In the same directory as the python scripts, place the CONTCAR file from you VASP calculations in the folder with the python scripts, run the following
 
@@ -25,14 +25,22 @@ Default inputs and ouputs are set (denoted by the square brackets [] in the inst
 
 		python make_slab.py -m [h k l] -l [layers] -v [vacuum] -o [output_name]
 
-	Example:
+	Example: a 111 surface, with 8 atomic layers and a 15 angstrom vacuum 
 
 		python make_slab.py -m 1 1 1 -l 8 -v 15 
 
- 3.  Cleaning the output [POSCAR_slab > POSCAR_final]: The output from the previous step creates an unsual POSCAR file so this step aims to clean it up. Here you can choose the have it in fractional or cartesian coordinates with the -a argument.
+3. Cleaning the output [POSCAR_slab > POSCAR_final]: The output from the previous step creates an unsual POSCAR file so this step aims to clean it up. Here you can choose the have it in fractional or cartesian coordinates with the -a argument.
 
-		 python clean_poscar.py -a 'cartesian or direct (default is set to direct)'
+		 python clean_poscar.py -a [cartesian or direct (default is set to direct)]
+	
+	Example: printing the atompositions in cartesian coordinates
 
-4. Cell mutiplier [POSCAR_final > POSCAR_super]: This is a script that multiplies the slab in the x y z directions using the argument -s.
+		python clean_poscar.py -a cartesian		
+
+5. Cell mutiplier [POSCAR_final > POSCAR_super]: This is a script that multiplies the slab in the x y z directions using the argument -s.
 
 		python multiply_cell.py -s 'x y z'
+
+	Example: create a 2 x 2 x 2 supercell 
+
+  		python multiply_cell.py -s 2 2 2 
