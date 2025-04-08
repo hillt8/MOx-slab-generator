@@ -14,7 +14,7 @@ Description:
 
 Arguments:
     -s, --size     Supercell size as three integers (e.g. -s 2 2 2)
-    -i, --input    Input POSCAR file (default: POSCAR)
+    -i, --input    Input POSCAR file (default: POSCAR_final)
     -o, --output   Output file name (default: POSCAR_super)
 
 Example:
@@ -34,7 +34,7 @@ parser = argparse.ArgumentParser(
     formatter_class=argparse.RawDescriptionHelpFormatter
 )
 parser.add_argument('-s', '--size', nargs=3, type=int, required=True, help='Multipliers for a, b, c directions (e.g. -s 2 2 2)')
-parser.add_argument('-i', '--input', type=str, default='POSCAR', help='Input POSCAR file (default: POSCAR)')
+parser.add_argument('-i', '--input', type=str, default='POSCAR_final', help='Input POSCAR file (default: POSCAR_final)')
 parser.add_argument('-o', '--output', type=str, default='POSCAR_super', help='Output file name (default: POSCAR_super)')
 
 args = parser.parse_args()
